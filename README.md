@@ -20,10 +20,10 @@ If "yes" or "y" is selected for "Include PDF feedback?" prompt, the pdfs created
 
 2. Download zip of student submissions
     You can do that by clicking the link as shown below from the Assignments->Grade screen. Check the box to download All.
-    ![Image of Download Link](https://github.com/nickdonn1/ctools_gradehelper/images/ctools_download.png)
+    ![Image of Download Link](https://raw.githubusercontent.com/nickdonn1/ctools_gradehelper/master/images/ctools_download.png)
 
 3. Unzip student submissions and put repo and assignment folder in the same directory as shown below and cd into directory
-    ![Image of Folder](https://github.com/nickdonn1/ctools_gradehelper/images/folder_struct.png)
+    ![Image of Folder](https://raw.githubusercontent.com/nickdonn1/ctools_gradehelper/master/images/folder_struct.png)
 
 ## Usage
 ### grade.py
@@ -38,7 +38,9 @@ If "yes" or "y" is selected for "Include PDF feedback?" prompt, the pdfs created
     [assignment_name]grader>> grade uniqname
 
 which will prompt:
+    ```
     Enter grade for uniqname: 
+    ```
 
 ##### Make comment to student:
     [assignment_name]grader>> c uniqname
