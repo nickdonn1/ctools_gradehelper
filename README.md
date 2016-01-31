@@ -44,8 +44,8 @@ If "yes" or "y" is selected for "Include PDF feedback?" prompt, the pdfs created
 
 #### Commands
 ##### Add/Change student grade:
-    [assignment_name]grader>> g uniqname
-    [assignment_name]grader>> grade uniqname
+    [assignment_name]grader>> uniqname g
+    [assignment_name]grader>> uniqname grade
 
 which will prompt:
     ```
@@ -53,8 +53,8 @@ which will prompt:
     ```
 
 ##### Make comment to student:
-    [assignment_name]grader>> c uniqname
-    [assignment_name]grader>> comment uniqname
+    [assignment_name]grader>> uniqname c
+    [assignment_name]grader>> uniqname comment
 
 which will launch Vim (see below on how to change to emacs) and allow you to modify student comments
 

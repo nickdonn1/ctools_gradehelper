@@ -10,7 +10,7 @@ except ImportError:
   import pyreadline as readline
 
 def printerror():
-    print 'grader: valid commands include "exit", "g[rade] <uniqname>" and "c[omment] <uniqname>"'
+    print 'grader: valid commands include "exit", "<uniqname> g[rade]" and "<uniqname> c[omment]"'
 
 if __name__ == "__main__":
     EDITOR = os.environ.get("EDITOR", "vim")
@@ -31,7 +31,7 @@ if __name__ == "__main__":
             exit()
 
         try:
-            cmd, uniqname = rawin.split()
+            uniqname, cmd = rawin.split()
         except:
             printerror()
             continue
