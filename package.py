@@ -1,9 +1,11 @@
 import os
 import shutil
 import zipfile
+import sys
 
 def packagePDF(assignment):
-    students = os.listdir("{}/{}".format(os.getcwd(), assignment))
+    cwd = os.getcwd()
+    students = os.listdir(os.path.join(cwd, "{}".format(assignment)))
     new_dir = "inprog_{}".format(assignment)
 
     for student in students:
@@ -11,13 +13,13 @@ def packagePDF(assignment):
             continue
 
         # if no submission was entered, no submission will be returned
-        if len(os.listdir("{}/{}/Submission attachment(s)".format(assignment, student))) == 0:
+        if len(os.listdir(os.path.join(cwd, "{}/{}/Submission attachment(s)".format(assignment, student)))) == 0:
             continue
 
         uniqname = student[student.find("(")+1:student.find(")")]
 
-        new_filename = "{}_{}.pdf".format(uniqname, assignment)
-        shutil.copy("{}/{}_{}_feedback.pdf".format(new_dir, student, assignment), "{}/{}/Feedback attachment(s)/{}".format(assignment, student, new_filename))
+        new_filename = "{}_{}_feedback.pdf".format(uniqname, assignment)
+        shutil.copy(os.path.join(cwd, "{}/{}_{}.pdf".format(new_dir, student, assignment)), os.path.join(cwd, "{}/{}/Feedback attachment(s)/{}".format(assignment, student, new_filename)))
 
 # http://stackoverflow.com/questions/1855095/how-to-create-a-zip-archive-of-a-directory
 def zipdir(path, ziph):
@@ -45,4 +47,4 @@ if __name__ == "__main__":
 
     shutil.rmtree("inprog_{}".format(assignment))
 
-    print("archive {}.zip created".format(assignment))
+    print "archive {}.zip created".format(assignment)

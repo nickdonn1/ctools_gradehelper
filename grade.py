@@ -3,8 +3,11 @@ import shutil
 import csv
 import os
 from subprocess import call
-import readline
 import sys
+try:
+  import readline
+except ImportError:
+  import pyreadline as readline
 
 def printerror():
     print 'grader: valid commands include "exit", "g[rade] <uniqname>" and "c[omment] <uniqname>"'
@@ -17,7 +20,7 @@ if __name__ == "__main__":
     else:
         assignment = sys.argv[1]
     
-    os.chdir(assignment)
+    os.chdir(os.path.join(os.getcwd(), assignment))
 
     query = "[{}]grader>> ".format(assignment)
 
@@ -45,6 +48,8 @@ if __name__ == "__main__":
                         continue
                     if row[0] == uniqname:
                         grade = raw_input("Enter grade for {},{} ({}): ".format(row[2], row[3], uniqname))
+                        if grade == "":
+                            print "grade for uniqname cleared"
                         if len(row) < 5:
                             row.append(grade)
                         else:
@@ -59,7 +64,7 @@ if __name__ == "__main__":
 
             for student in students:
                 if student[student.find("(")+1:student.find(")")] == uniqname:
-                    call([EDITOR, "{}/comments.txt".format(student)])
+                    call([EDITOR, os.path.join(os.getcwd(), "{}/comments.txt".format(student))])
 
         else:
             printerror()

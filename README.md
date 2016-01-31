@@ -1,6 +1,6 @@
 # ctools_gradehelper
-A little tool to help people grade with [the soon to be defunct] CTools (Sakai).
-Tested on OSX
+A little tool to help people grade with [the soon to be defunct] CTools (Sakai). Built for Python 2.7 .
+Tested on OSX and on Windows (in git-bash)
 
 # Features
 ### grade.py
@@ -25,12 +25,22 @@ If "yes" or "y" is selected for "Include PDF feedback?" prompt, the pdfs created
 3. Unzip student submissions and put repo and assignment folder in the same directory as shown below and cd into directory
     ![Image of Folder](https://raw.githubusercontent.com/nickdonn1/ctools_gradehelper/master/images/folder_struct.png)
 
+4. If running Windows, install pyreadline using pip: 
+    ```
+    pip install pyreadline
+    ```
+
 ## Usage
 ### grade.py
 #### Run:
+##### OSX/Unix:
     $ python repo_name/grade.py "assignment_name"
     $ python repo_name/grade.py assignment_name
     $ python repo_name/grade.py
+##### Windows in git-bash:
+    $ winpty python repo_name/grade.py "assignment_name"
+    $ winpty python repo_name/grade.py assignment_name
+    $ winpty python repo_name/grade.py
 
 #### Commands
 ##### Add/Change student grade:
@@ -46,7 +56,7 @@ which will prompt:
     [assignment_name]grader>> c uniqname
     [assignment_name]grader>> comment uniqname
 
-which will launch Vim and allow you to modify student comments
+which will launch Vim (see below on how to change to emacs) and allow you to modify student comments
 
 ##### Exit:
     [assignment_name]grader>> exit
@@ -64,3 +74,6 @@ From the Assignments->Grade screen, click "Upload All" and check the following b
 * Grade file
 * Feedback comments
 * Feedback attachment(s)
+
+## Change comments command to launch Emacs
+Change "vim" in line 16 of grade.py to "emacs"
