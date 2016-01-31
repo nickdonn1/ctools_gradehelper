@@ -28,7 +28,10 @@ def zipdir(path, ziph):
 
 if __name__ == "__main__":
     # Ask for name of directory
-    assignment = raw_input("Name of Assignment: ")
+    if (len(sys.argv) < 2):
+        assignment = raw_input("Name of Assignment: ")
+    else:
+        assignment = sys.argv[1]
 
     pdf = raw_input("Include PDF feedback? [y/n]: ")
 

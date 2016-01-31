@@ -3,7 +3,10 @@ import shutil
 
 if __name__ == "__main__":
     # Ask for name of directory
-    assignment = raw_input("Name of Assignment: ")
+    if (len(sys.argv) < 2):
+        assignment = raw_input("Name of Assignment: ")
+    else:
+        assignment = sys.argv[1]
 
     #get student directory names
     students = os.listdir("{}/{}".format(os.getcwd(), assignment))
@@ -22,4 +25,3 @@ if __name__ == "__main__":
         if files[0].endswith(".pdf"):
             new_filename = "{}_{}.pdf".format(student, assignment)
             shutil.copy("{}/{}/Submission attachment(s)/{}".format(assignment, student, files[0]), "{}/{}".format(new_dir, new_filename))
-            #shutil.copy("{}/{}/Submission attachment(s)/{}".format(assignment, student, files[0]), "{}/Feedback attachment(s)/{}".format(student, new_filename))

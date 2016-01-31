@@ -3,20 +3,38 @@ import shutil
 import csv
 import os
 from subprocess import call
+import readline
+import sys
+
+def printerror():
+    print 'grader: valid commands include "exit", "g[rade] <uniqname>" and "c[omment] <uniqname>"'
 
 if __name__ == "__main__":
     EDITOR = os.environ.get("EDITOR", "vim")
 
-    assignment = raw_input("Name of Assignment: ")
+    if (len(sys.argv) < 2):
+        assignment = raw_input("Name of Assignment: ")
+    else:
+        assignment = sys.argv[1]
+    
     os.chdir(assignment)
 
+    query = "[{}]grader>> ".format(assignment)
+
     while True:
-        rawin = raw_input("grader>> ")
-        cmd, uniqname = rawin.split()
+        rawin = raw_input(query)
+
+        if (rawin == "exit"):
+            exit()
+
+        try:
+            cmd, uniqname = rawin.split()
+        except:
+            printerror()
+            continue
 
         if (cmd == "g" or cmd == "grade"):
             tempfile = NamedTemporaryFile(delete=False)
-            grade = raw_input("Enter grade: ")
 
             with open("grades.csv".format(assignment)) as csvFile, tempfile:
                 reader = csv.reader(csvFile, delimiter=',', quotechar='"')
@@ -26,6 +44,7 @@ if __name__ == "__main__":
                     if len(row) == 0:
                         continue
                     if row[0] == uniqname:
+                        grade = raw_input("Enter grade for {},{} ({}): ".format(row[2], row[3], uniqname))
                         if len(row) < 5:
                             row.append(grade)
                         else:
@@ -43,4 +62,4 @@ if __name__ == "__main__":
                     call([EDITOR, "{}/comments.txt".format(student)])
 
         else:
-            exit()
+            printerror()
