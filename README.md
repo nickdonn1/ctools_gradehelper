@@ -33,21 +33,21 @@ If "yes" or "y" is selected for "Include PDF feedback?" prompt, the pdfs created
     $ python repo_name/grade.py
 
 #### Commands
-    ##### Add/Change student grade:
-        [assignment_name]grader>> g uniqname
-        [assignment_name]grader>> grade uniqname
+##### Add/Change student grade:
+    [assignment_name]grader>> g uniqname
+    [assignment_name]grader>> grade uniqname
 
-    which will prompt:
-        Enter grade for uniqname: 
+which will prompt:
+    Enter grade for uniqname: 
 
-    ##### Make comment to student:
-        [assignment_name]grader>> c uniqname
-        [assignment_name]grader>> comment uniqname
-    
-    which will launch Vim and allow you to modify student comments
+##### Make comment to student:
+    [assignment_name]grader>> c uniqname
+    [assignment_name]grader>> comment uniqname
 
-    ##### Exit:
-        [assignment_name]grader>> exit
+which will launch Vim and allow you to modify student comments
+
+##### Exit:
+    [assignment_name]grader>> exit
 
 ### unpack.py
 #### Run:
